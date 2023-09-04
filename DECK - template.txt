@@ -9,4 +9,4 @@
 ("F is for","friends who do things together")
 ("U is for","you and me")
 ("N is for","anywhere, anytime at all")
-("Crushed beneath the wheels of","capitalism")
+("See how they","run")

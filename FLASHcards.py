@@ -1,15 +1,7 @@
+import os
 import ast
 import random
 
-##########
-## DATA ##
-##########
-
-# import data for deck of flashcards from a text file
-with open('DECK - template.txt', 'r', encoding='utf-8') as f:
-    text = f.read()
-text = text.strip().replace('\n', ', ')
-deck = list(ast.literal_eval(text))
 # the deck of flashcards is a list of tuples, where each tuple is a flashcard
 # the first element of each tuple is the "question" on the flashcard, and the second element of each is the "answer"
 
@@ -17,16 +9,29 @@ deck = list(ast.literal_eval(text))
 ## FUNCTIONS ##
 ###############
 
+# import data for deck of flashcards from a text file
+def select_data():
+    files = [f for f in os.listdir() if f.endswith('.txt')]
+    print("Select a file to open:")
+    for i, file in enumerate(files):
+        print(f"{i+1}. {file}")
+    choice = int(input("Enter the number of the file you want to open: "))
+    filename =  files[choice-1]
+
+    with open(filename, 'r', encoding='utf-8') as f:
+        text = f.read()
+    text = text.strip().replace('\n', ', ')
+    deck = list(ast.literal_eval(text))
+    return deck
+
 # shuffle the deck of flashcards
-def shuffle_deck():
-    global deck
+def shuffle_deck(deck):
     shuffled = random.sample(deck, len(deck))
     deck = shuffled
     return deck
 
 # draw a card from the deck and display the question
-def draw_card():
-    global deck
+def draw_card(deck):
     if len(deck) > 0:
         card = deck.pop(0)
         print(card[0])
@@ -46,17 +51,17 @@ def show_answer(card):
 ## MAIN ##
 ##########
 
-# main loop to draw cards and show answers until the deck is empty or 'qq' and ENTHER are pressed
+# main loop to draw cards and show answers until the deck is empty or 'qq' and ENTER are pressed
 def main():
-    shuffle_deck()
+    deck = select_data()
+    shuffle_deck(deck)
     card = None
     while True:
         if not card:
             response = input("Press ENTER to draw a card or 'qq' and ENTER to quit")
             if response == 'qq':
-                print("Until next time!")
                 break
-            card = draw_card()
+            card = draw_card(deck)
         else:
             input("Press ENTER to see the answer")
             show_answer(card)
