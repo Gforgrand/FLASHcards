@@ -3,7 +3,7 @@
 ("A or B in logic is the same as what in set theory?","Elements in the union A  ⋃ B")
 ("Elements in the union A  ⋃ B in set theory is the same as what in logic?","A or B")
 ("Not A in logic is the same as what in set theory?","Elements in the complement of A")
-("Elements in the complement of A in set theory is the same as what in logic?"," Not A")
+("Elements in the complement of A in set theory is the same as what in logic?","Not A")
 ("A statement can have what values in Boolean logic?","True or False")
 ("A conditional is what in Boolean logic?","A compound statement of the form *if p then q*, or *if p then q, else s*")
 ("What is a universal quantifier","States an entire set of things shares a characteristic")
